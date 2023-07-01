@@ -8,5 +8,8 @@
 - 你可以通过邮箱或QQ联系我(2426181331#qq.com)
 
 ## 我正在学习什么语言
-- Kotlin/Cpp/Python/PHP
+- Python
+- Go
+- PHP
+- C
 
