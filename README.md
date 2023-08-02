@@ -10,6 +10,6 @@
 ## 我正在学习什么语言
 - Python
 - Go
-- PHP
+- Rust
 - C
 
