@@ -24,13 +24,6 @@ Sometimes I also write the front-end of the website, so I also use a little java
 
 ![My GitHub stats](https://github-readme-stats.vercel.app/api?username=PPKunOfficial&show_icons=true&count_private=true)
 
-**Social Accounts**
-
-<div class="display:flex">
-<img src="https://stats.justsong.cn/api/bilibili/?id=321789902"/>
-<img src="https://stats.justsong.cn/api/github?username=ppkunofficial"/>
-</div>
-
 **Public Repos**
 
 [![VerixGo Card](https://github-readme-stats.vercel.app/api/pin/?username=PPKunOfficial&repo=VerixGo-OpenSource)](https://github.com/PPKunOfficial/VerixGo-OpenSource)
