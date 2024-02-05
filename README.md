@@ -24,6 +24,4 @@ Sometimes I also write the front-end of the website, so I also use a little java
 
 ![My GitHub stats](https://github-readme-stats.vercel.app/api?username=PPKunOfficial&show_icons=true&count_private=true)
 
-**Public Repos**
-
-[![VerixGo Card](https://github-readme-stats.vercel.app/api/pin/?username=PPKunOfficial&repo=VerixGo-OpenSource)](https://github.com/PPKunOfficial/VerixGo-OpenSource)
+**Public Repos I Pinned**
