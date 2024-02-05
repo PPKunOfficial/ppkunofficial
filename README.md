@@ -1,15 +1,36 @@
+<p align="center">
+  <img src="suzumiya-haruhi-like.webp" alt="Banner">
+</p>
 
-# Hello,World!
 
-<img align="right" src="https://github-readme-stats.vercel.app/api?username=PPKunOfficial&hide=issues&show_icons=true&include_all_commits=true&theme=vue&count_private=true" />
+<div align="center">
+<h1>
+  Hi, I'm Peter Peng.
+  <br/>
+  Welcome to my profile!
+</h1>
+<h2>
+As a high school student and a beginner developer, I’m working hard to improve myself.
+</h2>
+</div>
 
-## Hi，我是PPKunOfficial
-- Python爱好者
-- 你可以通过邮箱或QQ联系我(2426181331#qq.com)
+**Top Langs**
 
-## 我正在学习什么语言
-- Python
-- Go
-- Rust
-- C
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs?username=PPKunOfficial&layout=compact&hide=html,css,javascript)
 
+Sometimes I also write the front-end of the website, so I also use a little javascript, typescript, vue, but it is negligible
+
+**Activity**
+
+![My GitHub stats](https://github-readme-stats.vercel.app/api?username=PPKunOfficial&show_icons=true&count_private=true)
+
+**Social Accounts**
+
+<div class="display:flex">
+<img src="https://stats.justsong.cn/api/bilibili/?id=321789902"/>
+<img src="https://stats.justsong.cn/api/github?username=ppkunofficial"/>
+</div>
+
+**Public Repos**
+
+[![VerixGo Card](https://github-readme-stats.vercel.app/api/pin/?username=PPKunOfficial&repo=VerixGo-OpenSource)](https://github.com/PPKunOfficial/VerixGo-OpenSource)
