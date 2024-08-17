@@ -12,6 +12,8 @@
 <h2>
 As a high school student and a beginner developer, I’m working hard to improve myself.
 </h2>
+<br/>
+<p>Dream is to be a Full Stack</p>
 </div>
 
 **Top Langs**
