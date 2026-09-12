@@ -1,29 +1,52 @@
 <p align="center">
-  <img src="suzumiya-haruhi-like.webp" alt="Banner">
+  <img src="suzumiya-haruhi-like.webp" alt="Banner" width="100%">
 </p>
 
-
 <div align="center">
-<h1>
-  Hi, I'm PPyyk.
-  <br/>
-  Welcome to my profile!
-</h1>
-<h2>
-As a high school student and a beginner developer, I’m working hard to improve myself.
-</h2>
-<br/>
-<p>Dream is to be a Full Stack</p>
+
+# 💫 Hi, I'm PPyyk (@PPKunOfficial)
+
+### 🎓 CS Undergraduate @ GDUPT & Aspiring Full-Stack Developer
+*Constantly learning, building, and exploring systems & web technologies.*
+
+---
+
+<!-- Tech Stack Badges -->
+### 🛠️ Tech Stack & Tools
+
+![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+
+---
+
+### 📊 GitHub Stats & Activity
+
+<!-- Adaptive Theme Stats: Extended Cards -->
+<p align="center">
+  <picture>
+    <source
+      srcset="https://github-stats-extended.vercel.app/api?username=PPKunOfficial&show_icons=true&include_all_commits=true&count_private=true&theme=dark_github&rank_icon=github&show=prs_merged_percentage,prs_reviewed"
+      media="(prefers-color-scheme: dark)"
+    />
+    <img src="https://github-stats-extended.vercel.app/api?username=PPKunOfficial&show_icons=true&include_all_commits=true&count_private=true&theme=light_github&rank_icon=github&show=prs_merged_percentage,prs_reviewed" alt="PPyyk's GitHub Stats" />
+  </picture>
+</p>
+
+<p align="center">
+  <picture>
+    <source
+      srcset="https://github-stats-extended.vercel.app/api/top-langs/?username=PPKunOfficial&layout=compact&langs_count=6&theme=dark_github"
+      media="(prefers-color-scheme: dark)"
+    />
+    <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=PPKunOfficial&layout=compact&langs_count=6&theme=light_github" alt="Top Languages" />
+  </picture>
+</p>
+
+---
+
+<p>📌 <i>Public Repos have been pinned below!</i></p>
+
 </div>
-
-**Top Langs**
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs?username=PPKunOfficial&layout=compact&hide=html,css,javascript)
-
-Sometimes I also write the front-end of the website, so I also use a little javascript, typescript, vue, but it is negligible
-
-**Activity**
-
-![My GitHub stats](https://github-readme-stats.vercel.app/api?username=PPKunOfficial&show_icons=true&count_private=true)
-
-Public Repos have been pinned below!
