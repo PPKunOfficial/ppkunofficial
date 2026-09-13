@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="suzumiya-haruhi-like.webp" alt="Banner" width="100%">
+  <img src="suzumiya-haruhi-like.webp" alt="Banner" width="75%">
 </p>
 
 <div align="center">
@@ -31,17 +31,13 @@
       srcset="https://github-stats-extended.vercel.app/api?username=PPKunOfficial&show_icons=true&include_all_commits=true&count_private=true&theme=dark_github&rank_icon=github&show=prs_merged_percentage,prs_reviewed"
       media="(prefers-color-scheme: dark)"
     />
-    <img src="https://github-stats-extended.vercel.app/api?username=PPKunOfficial&show_icons=true&include_all_commits=true&count_private=true&theme=light_github&rank_icon=github&show=prs_merged_percentage,prs_reviewed" alt="PPyyk's GitHub Stats" />
+    <img src="https://github-stats-extended.vercel.app/api?username=ppkunofficial&rank_icon=percentile&theme=light_github" alt="PPyyk's GitHub Stats" />
   </picture>
-</p>
-
-<p align="center">
   <picture>
     <source
-      srcset="https://github-stats-extended.vercel.app/api/top-langs/?username=PPKunOfficial&layout=compact&langs_count=6&theme=dark_github"
-      media="(prefers-color-scheme: dark)"
+      srcset="https://github-stats-extended.vercel.app/api/top-langs?username=ppkunofficial&layout=donut&theme=light_github&hide=jupyter%20notebook&exclude_repo=2025-51MCMProblemC"
     />
-    <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=PPKunOfficial&layout=compact&langs_count=6&theme=light_github" alt="Top Languages" />
+    <img src="https://github-stats-extended.vercel.app/api/top-langs?username=ppkunofficial&layout=donut&theme=light_github&hide=jupyter%20notebook&exclude_repo=2025-51MCMProblemC" alt="Top Languages" />
   </picture>
 </p>
 
