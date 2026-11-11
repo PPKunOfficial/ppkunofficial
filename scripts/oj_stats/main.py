@@ -64,8 +64,6 @@ def main() -> int:
 
     for key in failed:
         print(f"::warning title=OJ stats::{key} update failed; previous chart kept")
-    for key in skipped:
-        print(f"::notice title=OJ stats::{key} is disabled or not implemented")
 
     if not rendered and failed:
         return 1
