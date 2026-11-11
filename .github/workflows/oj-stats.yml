@@ -1,0 +1,44 @@
+name: Update OJ Stats
+
+on:
+  schedule:
+    # 03:17 Asia/Shanghai (19:17 UTC)
+    - cron: "17 19 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: oj-stats
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Render OJ charts
+        env:
+          TZ: Asia/Shanghai
+        run: python3 scripts/oj_stats/main.py
+
+      - name: Commit updated charts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- assets/oj; then
+            echo "No chart changes"
+            exit 0
+          fi
+          git add assets/oj
+          git commit -m "chore(oj-stats): refresh charts"
+          git push

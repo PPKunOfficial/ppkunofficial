@@ -43,6 +43,26 @@
 
 ---
 
+### 🧩 OJ 刷题情况
+
+<p align="center">
+  <img src="assets/oj/luogu.svg" alt="洛谷 PPKun 刷题趋势" width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/oj/codeforces.svg" alt="Codeforces PPyyk. 刷题趋势" width="100%">
+</p>
+
+<p align="center">
+  <img src="assets/oj/leetcode.svg" alt="力扣 pp-kun 刷题趋势" width="100%">
+</p>
+
+<p align="center">
+  <sub>📈 每天 03:17 (UTC+8) 由 GitHub Actions 自动更新</sub>
+</p>
+
+---
+
 <p>📌 <i>Public Repos have been pinned below!</i></p>
 
 </div>

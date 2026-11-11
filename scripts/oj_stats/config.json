@@ -1,0 +1,25 @@
+{
+  "timezone": "Asia/Shanghai",
+  "window_days": 180,
+  "daily_days": 30,
+  "platforms": {
+    "luogu": {
+      "enabled": true,
+      "uid": 311493,
+      "display_name": "PPKun"
+    },
+    "codeforces": {
+      "enabled": true,
+      "handle": "PPyyk."
+    },
+    "leetcode": {
+      "enabled": true,
+      "site": "cn",
+      "user_slug": "pp-kun"
+    },
+    "nowcoder": {
+      "enabled": false,
+      "uid": null
+    }
+  }
+}
