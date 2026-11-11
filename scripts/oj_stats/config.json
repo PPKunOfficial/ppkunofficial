@@ -1,6 +1,6 @@
 {
   "timezone": "Asia/Shanghai",
-  "window_days": 180,
+  "window_days": 60,
   "daily_days": 30,
   "platforms": {
     "luogu": {
