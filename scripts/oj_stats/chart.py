@@ -13,17 +13,17 @@ from common import (
     text_width,
 )
 
-WIDTH = 300
-HEIGHT = 340
+WIDTH = 280
+HEIGHT = 350
 FONT = (
     "system-ui,-apple-system,'Segoe UI','Noto Sans SC','PingFang SC',"
     "'Microsoft YaHei',sans-serif"
 )
 
-LEFT = 34.0
-RIGHT = 284.0
-CUM_TOP, CUM_BOTTOM = 100.0, 184.0
-DAY_TOP, DAY_BOTTOM = 220.0, 292.0
+LEFT = 32.0
+RIGHT = 272.0
+CUM_TOP, CUM_BOTTOM = 104.0, 190.0
+DAY_TOP, DAY_BOTTOM = 228.0, 300.0
 
 TEXT = "#0f172a"
 MUTED = "#64748b"
@@ -43,15 +43,15 @@ def _tick(value: float) -> str:
 
 
 def _stats_grid(items: list[tuple[str, str, str | None]]) -> str:
-    coords = [(16, 55), (152, 55), (16, 72), (152, 72)]
+    coords = [(14, 55), (146, 55), (14, 75), (146, 75)]
     chunks: list[str] = []
     for (label, value, color), (x, y) in zip(items, coords):
         chunks.append(
-            f'<text x="{x}" y="{y}" font-size="9" fill="#8a94a6">{_esc(label)}</text>'
+            f'<text x="{x}" y="{y}" font-size="10.5" fill="#8a94a6">{_esc(label)}</text>'
         )
-        value_x = x + text_width(label, 9) + 4
+        value_x = x + text_width(label, 10.5) + 4
         chunks.append(
-            f'<text x="{value_x:.1f}" y="{y}" font-size="11.5" font-weight="600" '
+            f'<text x="{value_x:.1f}" y="{y}" font-size="13.5" font-weight="600" '
             f'fill="{color or TEXT}">{_esc(value)}</text>'
         )
     return "".join(chunks)
@@ -66,7 +66,7 @@ def _month_labels(days: list[date], x_of) -> str:
             if index != 0 and x - last_x < 44:
                 continue
             chunks.append(
-                f'<text x="{x:.1f}" y="196" font-size="8" fill="{FAINT}" '
+                f'<text x="{x:.1f}" y="202" font-size="9" fill="{FAINT}" '
                 f'text-anchor="middle">{day.month}月</text>'
             )
             last_x = x
@@ -85,7 +85,7 @@ def _day_labels(days: list[date], x_of, step: int = 10) -> str:
             continue
         day = days[index]
         chunks.append(
-            f'<text x="{x:.1f}" y="305" font-size="8" fill="{FAINT}" '
+            f'<text x="{x:.1f}" y="314" font-size="9" fill="{FAINT}" '
             f'text-anchor="middle">{day.month}-{day.day:02d}</text>'
         )
         last_x = x
@@ -101,7 +101,7 @@ def _grid(ticks: list[float], y_of) -> str:
             f'stroke="{"#e2e8f0" if value == 0 else GRID}" stroke-width="1"/>'
         )
         chunks.append(
-            f'<text x="28" y="{y + 2.8:.1f}" font-size="8" fill="{FAINT}" '
+            f'<text x="26" y="{y + 3.0:.1f}" font-size="9.5" fill="{FAINT}" '
             f'text-anchor="end">{_tick(value)}</text>'
         )
     return "".join(chunks)
@@ -202,18 +202,13 @@ def build_svg(stats: PlatformStats, window_days: int = 60, daily_days: int = 30)
         )
 
     platform_name = PLATFORM_NAME(stats.key)
-    name_width = text_width(platform_name, 14.5)
+    name_width = text_width(platform_name, 16)
     handle_svg = (
-        f'<text x="{25 + name_width + 7:.1f}" y="30" font-size="10.5" '
+        f'<text x="{23 + name_width + 6:.1f}" y="31" font-size="11.5" '
         f'fill="{MUTED}">{_esc(stats.handle)}</text>'
     )
 
     footer_time = f"更新于 {stats.updated_at:%m-%d %H:%M}"
-    footer_note = (
-        f'<text x="16" y="326" font-size="7" fill="#b6c0cf">{_esc(stats.note)}</text>'
-        if stats.note
-        else ""
-    )
 
     aria = (
         f"{platform_name} {stats.handle} 最近 {window_days} 天"
@@ -231,26 +226,24 @@ def build_svg(stats: PlatformStats, window_days: int = 60, daily_days: int = 30)
   </defs>
   <g font-family="{FONT}">
     <rect x="0.5" y="0.5" width="{WIDTH - 1}" height="{HEIGHT - 1}" rx="14" fill="#ffffff" stroke="#e6ebf2"/>
-    <rect x="16" y="16" width="3" height="18" rx="1.5" fill="{stats.accent}"/>
-    <text x="25" y="30" font-size="14.5" font-weight="700" fill="{TEXT}">{_esc(platform_name)}</text>
+    <rect x="14" y="16" width="3" height="19" rx="1.5" fill="{stats.accent}"/>
+    <text x="25" y="31" font-size="16" font-weight="700" fill="{TEXT}">{_esc(platform_name)}</text>
     {handle_svg}
     {_stats_grid(stats.stats)}
-    <text x="16" y="92" font-size="9" fill="{MUTED}">{_esc(stats.cumulative_label)} · 近 {window_days} 天</text>
+    <text x="16" y="98" font-size="10.5" fill="{MUTED}">{_esc(stats.cumulative_label)} · 近 {window_days} 天</text>
     {_grid([0, y_max / 2, y_max], cum_y)}
     <path d="{area_path}" fill="url(#area-{stats.key})"/>
     <path d="{line_path}" fill="none" stroke="{stats.accent}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     {dots}
     {_month_labels(days, cum_x)}
-    <text x="16" y="212" font-size="9" fill="{MUTED}">{_esc(stats.daily_label)} · 近 {daily_days} 天</text>
-    <text x="{RIGHT}" y="212" font-size="7.5" fill="#a8b3c4" text-anchor="end">柱 每日 · 线 7 日均</text>
+    <text x="16" y="222" font-size="10.5" fill="{MUTED}">{_esc(stats.daily_label)} · 近 {daily_days} 天</text>
     {_grid([0, y_max_daily / 2, y_max_daily], day_y)}
     {''.join(bars)}
     <path d="{ma_path}" fill="none" stroke="{stats.accent}" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
     {ma_dots}
     {empty_state}
     {_day_labels(right_days, day_x)}
-    {footer_note}
-    <text x="{RIGHT}" y="326" font-size="7.5" fill="{FAINT}" text-anchor="end">{_esc(footer_time)}</text>
+    <text x="{RIGHT}" y="338" font-size="8.5" fill="{FAINT}" text-anchor="end">{_esc(footer_time)}</text>
   </g>
 </svg>
 """
