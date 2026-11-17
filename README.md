@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="suzumiya-haruhi-like.webp" alt="Banner" width="75%">
+  <img src="suzumiya-haruhi-like.webp" alt="Banner" width="50%">
 </p>
 
 <div align="center">
@@ -43,7 +43,7 @@
 
 ---
 
-### 🧩 OJ 刷题情况
+### 🧩 OJ
 
 <p align="center">
   <a href="assets/oj/luogu.svg"><img src="assets/oj/luogu.svg" alt="洛谷 PPKun 刷题趋势" width="32%"></a>
