@@ -31,13 +31,14 @@
       srcset="https://github-stats-extended.vercel.app/api?username=PPKunOfficial&show_icons=true&include_all_commits=true&count_private=true&theme=dark_github&rank_icon=github&show=prs_merged_percentage,prs_reviewed"
       media="(prefers-color-scheme: dark)"
     />
-    <img src="https://github-stats-extended.vercel.app/api?username=ppkunofficial&rank_icon=percentile&theme=light_github" alt="PPyyk's GitHub Stats" width="50%" />
+    <img src="https://github-stats-extended.vercel.app/api?username=ppkunofficial&show_icons=true&include_all_commits=true&count_private=true&rank_icon=percentile&show=prs_merged_percentage,prs_reviewed&theme=light_github" alt="PPyyk's GitHub Stats" width="48.55%" />
   </picture>
   <picture>
     <source
-      srcset="https://github-stats-extended.vercel.app/api/top-langs?username=ppkunofficial&layout=donut&theme=light_github&hide=jupyter%20notebook&exclude_repo=2025-51MCMProblemC"
+      srcset="https://github-stats-extended.vercel.app/api/top-langs?username=ppkunofficial&layout=donut&theme=dark_github&hide=jupyter%20notebook&exclude_repo=2025-51MCMProblemC"
+      media="(prefers-color-scheme: dark)"
     />
-    <img src="https://github-stats-extended.vercel.app/api/top-langs?username=ppkunofficial&layout=donut&theme=light_github&hide=jupyter%20notebook&exclude_repo=2025-51MCMProblemC" alt="Top Languages" width="40%"/>
+    <img src="https://github-stats-extended.vercel.app/api/top-langs?username=ppkunofficial&layout=donut&theme=light_github&hide=jupyter%20notebook&exclude_repo=2025-51MCMProblemC" alt="Top Languages" width="41.45%"/>
   </picture>
 </p>
 
@@ -46,13 +47,28 @@
 ### 🧩 OJ
 
 <p align="center">
-  <a href="assets/oj/luogu.svg"><img src="assets/oj/luogu.svg" alt="洛谷 PPKun 刷题趋势" width="32%"></a>
-  <a href="assets/oj/codeforces.svg"><img src="assets/oj/codeforces.svg" alt="Codeforces PPyyk. 刷题趋势" width="32%"></a>
-  <a href="assets/oj/leetcode.svg"><img src="assets/oj/leetcode.svg" alt="力扣 pp-kun 刷题趋势" width="32%"></a>
+  <a href="assets/oj/luogu.svg">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/oj/luogu-dark.svg">
+      <img src="assets/oj/luogu.svg" alt="洛谷 PPKun 刷题趋势" width="32%">
+    </picture>
+  </a>
+  <a href="assets/oj/codeforces.svg">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/oj/codeforces-dark.svg">
+      <img src="assets/oj/codeforces.svg" alt="Codeforces PPyyk. 刷题趋势" width="32%">
+    </picture>
+  </a>
+  <a href="assets/oj/leetcode.svg">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="assets/oj/leetcode-dark.svg">
+      <img src="assets/oj/leetcode.svg" alt="力扣 pp-kun 刷题趋势" width="32%">
+    </picture>
+  </a>
 </p>
 
 <p align="center">
-  <sub>📈 近 60 天累积 · 近 30 天每日 · 力扣按提交次数统计 · 05:00 为统计日分界 · 每日自动更新</sub>
+  <sub>📈 近 60 天累积趋势 · 力扣按提交次数统计 · 05:00 为统计日分界 · 每日自动更新 · 深色模式自动适配</sub>
 </p>
 
 ---

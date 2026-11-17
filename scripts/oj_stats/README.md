@@ -2,8 +2,9 @@
 
 把洛谷 / Codeforces / 力扣的刷题数据渲染成紧凑的 SVG 卡片，三张可以并排放在 profile README 的同一行：
 
-- 上半部分：近 60 天累积量（面积图）
-- 下半部分：近 30 天每日新增（柱状图 + 7 日均线）
+- 大号累计通过/提交数 + 三项关键指标
+- 近 60 天累积趋势（无坐标轴 sparkline）
+- 同时生成浅色/深色两套 SVG，README 用 `<picture>` 按 `prefers-color-scheme` 自动选择
 
 ## 数据源
 
@@ -13,7 +14,7 @@
 | Codeforces | 官方 API `user.info` / `user.status` / `user.rating` | 每题首次 AC 的时间 |
 | 力扣（CN） | GraphQL `userProfilePublicProfile` + `userCalendar` | 公开接口只有提交日历，因此曲线按提交次数统计 |
 
-力扣的通过题数与难度分布来自 `userProfileUserQuestionProgressV2`，显示在卡片头部。
+力扣的通过题数与难度分布来自 `userProfileUserQuestionProgressV2`，显示在卡片指标区。
 
 ### 统计日分界
 
@@ -47,7 +48,7 @@
 python3 scripts/oj_stats/main.py
 ```
 
-输出写入 `assets/oj/*.svg`。脚本只用 Python 标准库，无需安装依赖。
+输出写入 `assets/oj/*.svg` 和对应的 `*-dark.svg`。脚本只用 Python 标准库，无需安装依赖。
 
 ## 定时任务
 
