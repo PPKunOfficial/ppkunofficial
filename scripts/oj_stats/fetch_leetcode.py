@@ -7,7 +7,14 @@ from collections import defaultdict
 from datetime import date, datetime, timezone
 from zoneinfo import ZoneInfo
 
-from common import HttpClient, PlatformStats, fmt_int, log
+from common import (
+    HttpClient,
+    PlatformStats,
+    fmt_int,
+    fold_early_morning,
+    log,
+    logical_date,
+)
 
 BASE = "https://leetcode.cn"
 GRAPHQL = f"{BASE}/graphql/"
@@ -27,7 +34,10 @@ def _data(client: HttpClient, url: str, query: str, variables: dict, referer: st
     return payload.get("data") or {}
 
 
-def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
+def fetch(
+    config: dict, tz: ZoneInfo, now: datetime, day_start_hour: int
+) -> PlatformStats:
+    today = now.date()
     slug = str(config["user_slug"])
     referer = f"{BASE}/u/{slug}/"
     client = HttpClient()
@@ -119,6 +129,9 @@ def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
                 continue
             daily[day] += int(count or 0)
 
+    fold_early_morning(daily, now, day_start_hour)
+    logical_today = logical_date(now, day_start_hour)
+
     total_submissions = int((profile.get("submissionProgress") or {}).get("totalSubmissions") or 0)
     total_submissions = max(total_submissions, sum(daily.values()))
 
@@ -126,7 +139,7 @@ def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
         ("通过", str(accepted_total), None),
         ("提交", fmt_int(total_submissions), None),
         ("易/中/难", f"{accepted['EASY']}/{accepted['MEDIUM']}/{accepted['HARD']}", None),
-        ("今日", f"+{daily.get(today, 0)}", None),
+        ("今日", f"+{daily.get(logical_today, 0)}", None),
     ]
 
     log(
@@ -144,6 +157,7 @@ def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
         cumulative_label="累积提交",
         daily_label="每日提交",
         accent="#f59e0b",
-        updated_at=datetime.now(tz),
+        updated_at=now,
+        day_start_hour=day_start_hour,
         note="力扣公开接口只提供提交日历，曲线按提交次数统计",
     )

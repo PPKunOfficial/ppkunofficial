@@ -44,6 +44,7 @@ class PlatformStats:
     daily_label: str
     accent: str
     updated_at: datetime
+    day_start_hour: int = 0
     note: str = ""
 
 
@@ -125,6 +126,35 @@ def parse_lentille(html: str, context: str = "") -> dict[str, Any]:
 def week_window(today: date, days: int) -> tuple[date, date]:
     """Return (start, today) where start is `days` days before today."""
     return today - timedelta(days=days), today
+
+
+def logical_date(moment: datetime, day_start_hour: int) -> date:
+    """Return the practice-day date containing a timezone-aware `moment`.
+
+    A practice day starts at `day_start_hour` local time, so activity in the
+    small hours is attributed to the previous calendar date.
+    """
+    return (moment - timedelta(hours=day_start_hour)).date()
+
+
+def fold_early_morning(
+    daily: dict[date, int], now: datetime, day_start_hour: int
+) -> dict[date, int]:
+    """Move a platform's partial current-day bucket to the previous practice day.
+
+    Luogu and LeetCode only expose whole-day aggregates, so their buckets cannot
+    be re-binned by hour. When fetching before the day boundary, the current-day
+    bucket can only contain activity from the small hours, which belongs to the
+    previous practice day.
+    """
+    if day_start_hour <= 0 or now.hour >= day_start_hour:
+        return daily
+    today = now.date()
+    early = daily.pop(today, 0)
+    if early:
+        previous = today - timedelta(days=1)
+        daily[previous] = daily.get(previous, 0) + early
+    return daily
 
 
 def iter_days(start: date, end: date) -> list[date]:

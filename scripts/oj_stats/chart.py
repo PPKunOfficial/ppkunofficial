@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from pathlib import Path
 
 from common import (
     PlatformStats,
     iter_days,
+    logical_date,
     nice_ceil,
     svg_escape,
     text_width,
@@ -107,8 +108,18 @@ def _grid(ticks: list[float], y_of) -> str:
     return "".join(chunks)
 
 
+def _utc_offset(moment: datetime) -> str:
+    offset = moment.utcoffset()
+    if offset is None:
+        return ""
+    minutes = int(offset.total_seconds() // 60)
+    sign = "+" if minutes >= 0 else "-"
+    hours, mins = divmod(abs(minutes), 60)
+    return f"UTC{sign}{hours}" + (f":{mins:02d}" if mins else "")
+
+
 def build_svg(stats: PlatformStats, window_days: int = 60, daily_days: int = 30) -> str:
-    today = stats.updated_at.date()
+    today = logical_date(stats.updated_at, stats.day_start_hour)
     window_start = today - timedelta(days=window_days)
     days = iter_days(window_start, today)
     values = [stats.daily.get(day, 0) for day in days]
@@ -208,7 +219,9 @@ def build_svg(stats: PlatformStats, window_days: int = 60, daily_days: int = 30)
         f'fill="{MUTED}">{_esc(stats.handle)}</text>'
     )
 
-    footer_time = f"更新于 {stats.updated_at:%m-%d %H:%M}"
+    footer_time = (
+        f"更新于 {stats.updated_at:%m-%d %H:%M} ({_utc_offset(stats.updated_at)})"
+    )
 
     aria = (
         f"{platform_name} {stats.handle} 最近 {window_days} 天"

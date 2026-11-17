@@ -9,14 +9,19 @@ from common import (
     HttpClient,
     PlatformStats,
     fmt_int,
+    fold_early_morning,
     log,
+    logical_date,
     parse_lentille,
 )
 
 BASE = "https://www.luogu.com.cn"
 
 
-def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
+def fetch(
+    config: dict, tz: ZoneInfo, now: datetime, day_start_hour: int
+) -> PlatformStats:
+    today = now.date()
     uid = int(config["uid"])
     client = HttpClient()
     url = f"{BASE}/user/{uid}"
@@ -41,6 +46,9 @@ def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
         if isinstance(values, list) and values:
             daily[day] = int(values[0] or 0)
 
+    fold_early_morning(daily, now, day_start_hour)
+    logical_today = logical_date(now, day_start_hour)
+
     name = str(user.get("name") or config.get("display_name") or f"uid {uid}")
     log("luogu", f"{name}: {total} passed, {len(daily)} active days in heatmap")
 
@@ -48,7 +56,7 @@ def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
         ("通过", str(total), None),
         ("提交", fmt_int(user.get("submittedProblemCount")), None),
         ("排名", fmt_int(user.get("ranking")), None),
-        ("今日", f"+{daily.get(today, 0)}", None),
+        ("今日", f"+{daily.get(logical_today, 0)}", None),
     ]
 
     return PlatformStats(
@@ -60,5 +68,6 @@ def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
         cumulative_label="累积通过",
         daily_label="新通过",
         accent="#3b82f6",
-        updated_at=datetime.now(tz),
+        updated_at=now,
+        day_start_hour=day_start_hour,
     )

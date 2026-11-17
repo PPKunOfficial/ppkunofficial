@@ -31,6 +31,7 @@ def main() -> int:
     tz = ZoneInfo(config.get("timezone", "Asia/Shanghai"))
     window_days = int(config.get("window_days", 180))
     daily_days = int(config.get("daily_days", 30))
+    day_start_hour = int(config.get("day_start_hour", 0))
     now = datetime.now(tz)
 
     rendered: list[str] = []
@@ -47,7 +48,7 @@ def main() -> int:
             skipped.append(key)
             continue
         try:
-            stats = fetcher(platform_config, tz, now.date())
+            stats = fetcher(platform_config, tz, now, day_start_hour)
             out_path = OUT_DIR / f"{key}.svg"
             write_chart(stats, out_path, window_days, daily_days)
             rendered.append(key)

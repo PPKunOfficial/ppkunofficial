@@ -2,7 +2,8 @@ name: Update OJ Stats
 
 on:
   schedule:
-    # 03:17 Asia/Shanghai (19:17 UTC)
+    # 03:17 Asia/Shanghai (19:17 UTC). GitHub 的 schedule 可能延迟数小时，
+    # 卡片右下角显示实际运行时间。
     - cron: "17 19 * * *"
   workflow_dispatch:
 
@@ -17,6 +18,8 @@ jobs:
   update:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      TZ: Asia/Shanghai
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -27,8 +30,6 @@ jobs:
           python-version: "3.12"
 
       - name: Render OJ charts
-        env:
-          TZ: Asia/Shanghai
         run: python3 scripts/oj_stats/main.py
 
       - name: Commit updated charts

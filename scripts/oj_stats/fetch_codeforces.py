@@ -8,7 +8,7 @@ from collections import defaultdict
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
 
-from common import HttpClient, PlatformStats, log
+from common import HttpClient, PlatformStats, log, logical_date
 
 BASE = "https://codeforces.com/api"
 
@@ -45,7 +45,9 @@ def _api(client: HttpClient, method: str, **params: str):
     return payload.get("result")
 
 
-def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
+def fetch(
+    config: dict, tz: ZoneInfo, now: datetime, day_start_hour: int
+) -> PlatformStats:
     handle = str(config["handle"])
     client = HttpClient()
 
@@ -77,7 +79,7 @@ def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
 
     daily: dict[date, int] = defaultdict(int)
     for timestamp in first_ac.values():
-        day = datetime.fromtimestamp(timestamp, tz).date()
+        day = logical_date(datetime.fromtimestamp(timestamp, tz), day_start_hour)
         daily[day] += 1
 
     rating = info.get("rating")
@@ -106,5 +108,6 @@ def fetch(config: dict, tz: ZoneInfo, today: date) -> PlatformStats:
         cumulative_label="累积通过",
         daily_label="新通过",
         accent="#e11d48",
-        updated_at=datetime.now(tz),
+        updated_at=now,
+        day_start_hour=day_start_hour,
     )
